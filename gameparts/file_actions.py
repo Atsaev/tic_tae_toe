@@ -7,6 +7,7 @@ class FileActions:
     def write_to_file(self, filename, text):
         self.filename = filename
         self.text = text
-        with open(filename, 'a') as file:
-            file.write(text + '\n')
-            file.close()
+        file = open(filename, 'r')
+        content = file.read(12)
+        print(content)
+        file.close()
