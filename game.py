@@ -1,12 +1,14 @@
 # game.py
 
 from gameparts import Board
+from gameparts import FileActions
 # Добавился ещё один импорт - исключение CellOccupiedError.
 from gameparts.exceptions import CellOccupiedError, FieldIndexError
 
 
 def main():
     game = Board()
+    txt_write = FileActions()
     current_player = 'X'
     running = True
     game.display()
@@ -52,8 +54,12 @@ def main():
         if game.check_win(current_player):
             print(f'Победили {current_player}.')
             running = False
+            txt_write.write_to_file(
+                'example.txt', f'Победили {current_player}.')
         elif game.is_board_full():
             print('Ничья!')
+            txt_write.write_to_file('example.txt', 'Ничья!')
+
             running = False
         current_player = 'O' if current_player == 'X' else 'X'
 
