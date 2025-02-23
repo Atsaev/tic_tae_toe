@@ -4,10 +4,7 @@ class FileActions:
     def __init__(self):
         self.text = ''
 
-    def write_to_file(self, filename, text):
-        self.filename = filename
-        self.text = text
-        file = open(filename, 'r')
-        content = file.read(12)
-        print(content)
-        file.close()
+    def save_result(self, filename, text):
+        with open(filename, 'a') as file:  # Open the file in append mode
+            # Add a newline character for better readability
+            file.write(text + '\n')
